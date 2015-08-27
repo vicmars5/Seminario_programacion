@@ -1,0 +1,21 @@
+# depslib dependency file v1.0
+1440617872 source:c:\users\vic\documents\github\seminario\spa2\main.cpp
+	<iostream>
+	<string>
+	<stdlib.h>
+	"Productos.h"
+	"Servicios.h"
+
+1440605213 source:c:\users\vic\documents\github\seminario\spa2\src\productos.cpp
+
+1440606463 c:\users\vic\documents\github\seminario\spa2\include\productos.h
+	<iostream>
+	<string>
+	<stdlib.h>
+
+1440606259 source:c:\users\vic\documents\github\seminario\spa2\src\servicios.cpp
+
+1440618094 c:\users\vic\documents\github\seminario\spa2\include\servicios.h
+	<iostream>
+	<string>
+
