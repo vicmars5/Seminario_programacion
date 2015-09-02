@@ -7,6 +7,7 @@ class Main
 			"\nProductos 1" +
 			"\nServicios 2"
 		option = gets().to_i
+
 		case option
 			when 1
 				productos = Productos.new()
@@ -18,6 +19,7 @@ class Main
 				servicios.mostrar()
 		end
 	end
+
 
 end
 
