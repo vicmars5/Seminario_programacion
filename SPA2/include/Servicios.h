@@ -3,6 +3,7 @@
 #include <iostream>
 #include <string>
 #include <stdio.h>
+#include <conio.h>
 
 using namespace std;
 
@@ -43,6 +44,7 @@ void Servicios::Mostrar(){
     cout << endl <<"Descripcion: " << descripcion ;
     cout << endl <<"Precio minimo: $" << precio_minimo ;
     cout << endl <<"Precio maximo: $" << precio_maximo ;
+    getch();
 }
 
 void Servicios::Buscar(){
@@ -52,37 +54,40 @@ void Servicios::Buscar(){
     cin >> busqueda;
     if (codigo == busqueda){
         Mostrar();
-    } else { cout << "No  existe"; }
+    } else { cout << "No  existe"; getch();}
+
 }
 
 void Servicios::Menu(){
-    system("cls");
-    fflush(stdin);
+    bool repetir=true;
     int opcion;
     int main();
-    cout << "   Servicios"
-        << endl << "1.-Capturar"
-        << endl << "2.-Mostrar"
-        << endl << "3.-Buscar"
-        << endl << "4.-Menu principal"
-        << endl << "Opcion: ";
-    cin >> opcion;
 
-    if(opcion == 1){
-        Capturar();
-    }
-    if(opcion == 2){
-        Mostrar();
-    }
-    if(opcion == 3){
-        //Buscar();
-    }
-    if(opcion == 4){
-        main();
-    }
 
-    if(opcion < 4){
-        Menu();
+    while (repetir) {
+        system("cls");
+        fflush(stdin);
+
+        cout << "   Servicios"
+            << endl << "1.-Capturar"
+            << endl << "2.-Mostrar"
+            << endl << "3.-Buscar"
+            << endl << "4.-Salir"
+            << endl << "Opcion: ";
+        cin >> opcion;
+
+        if(opcion == 1){
+            Capturar();
+        }
+        if(opcion == 2){
+            Mostrar();
+        }
+        if(opcion == 3){
+            Buscar();
+        }
+        if(opcion == 4){
+            repetir=false;
+        }
     }
 }
 #endif // SERVICIOS_H

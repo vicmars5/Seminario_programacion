@@ -6,7 +6,13 @@
 
 using namespace std;
 
-
+/* Si no esta definida la carpeta win 32
+ifdef WIN32
+	#define CLEAR() system('cls')
+#else
+	#define CLEAR() system('clear')
+#endif
+*/
 Servicios servicios;
 Productos productos;
 

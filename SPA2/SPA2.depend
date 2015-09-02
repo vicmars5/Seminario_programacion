@@ -19,23 +19,25 @@
 	<iostream>
 	<string>
 
-1441039453 source:c:\users\vic\documents\github\seminario_programacion\spa2\main.cpp
+1441200449 source:c:\users\vic\documents\github\seminario_programacion\spa2\main.cpp
 	<iostream>
 	<string>
 	<stdlib.h>
 	"Productos.h"
 	"Servicios.h"
 
-1441039751 c:\users\vic\documents\github\seminario_programacion\spa2\include\productos.h
+1441209379 c:\users\vic\documents\github\seminario_programacion\spa2\include\productos.h
 	<iostream>
 	<string>
 	<stdlib.h>
 	<stdio.h>
+	<conio.h>
 
-1441040189 c:\users\vic\documents\github\seminario_programacion\spa2\include\servicios.h
+1441209324 c:\users\vic\documents\github\seminario_programacion\spa2\include\servicios.h
 	<iostream>
 	<string>
 	<stdio.h>
+	<conio.h>
 
 1440605213 source:c:\users\vic\documents\github\seminario_programacion\spa2\src\productos.cpp
 
