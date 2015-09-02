@@ -64,7 +64,7 @@ void Servicios::Menu(){
     int main();
 
 
-    while (repetir) {
+    do{
         system("cls");
         fflush(stdin);
 
@@ -88,6 +88,6 @@ void Servicios::Menu(){
         if(opcion == 4){
             repetir=false;
         }
-    }
+    }while (repetir);
 }
 #endif // SERVICIOS_H

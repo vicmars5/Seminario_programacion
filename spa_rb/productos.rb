@@ -42,14 +42,15 @@ class Productos
 			opcion=gets()
 
 			case opcion 
-				when 1:
+				when 1
 					capturar()
-				when 2:
+				when 2
 					mostrar()
-				when 3:
+				when 3
 					buscar()
-				when 4:
+				when 4
 					repetir=false
+			end
 		end
 	end
 end
