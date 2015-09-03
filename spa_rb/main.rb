@@ -14,11 +14,10 @@ class Main
 		case option
 			when 1
 				productos = Productos.new()
-				productos.Menu()
+				productos.menu()
 			when 2
 				servicios = Servicios.new()
-				servicios.capturar()
-				servicios.mostrar()
+				servicios.menu()
 		end
 	end
 

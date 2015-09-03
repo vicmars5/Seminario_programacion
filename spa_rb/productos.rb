@@ -28,6 +28,7 @@ class Productos
 			mostrar();
 		else
 			puts "\nNo existe"
+		end
 	end
 
 	def menu
@@ -39,7 +40,7 @@ class Productos
 				"\n 3-Buscar"+ 
 				"\n 4-Salir"+ 
 				"\n Opcion: "
-			opcion=gets()
+			opcion=gets().to_i
 
 			case opcion 
 				when 1
@@ -54,3 +55,4 @@ class Productos
 		end
 	end
 end
+
