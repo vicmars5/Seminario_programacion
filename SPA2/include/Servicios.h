@@ -61,8 +61,6 @@ void Servicios::Buscar(){
 void Servicios::Menu(){
     bool repetir=true;
     int opcion;
-    int main();
-
 
     do{
         system("cls");

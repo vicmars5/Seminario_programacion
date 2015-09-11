@@ -19,27 +19,47 @@
 	<iostream>
 	<string>
 
-1441200449 source:c:\users\vic\documents\github\seminario_programacion\spa2\main.cpp
+1442006122 source:c:\users\vic\documents\github\seminario_programacion\spa2\main.cpp
 	<iostream>
 	<string>
 	<stdlib.h>
 	"Productos.h"
 	"Servicios.h"
+	"Masajistas.h"
+	"Clientes.h"
 
-1441211098 c:\users\vic\documents\github\seminario_programacion\spa2\include\productos.h
+1441814006 c:\users\vic\documents\github\seminario_programacion\spa2\include\productos.h
 	<iostream>
 	<string>
 	<stdlib.h>
 	<stdio.h>
 	<conio.h>
 
-1441211207 c:\users\vic\documents\github\seminario_programacion\spa2\include\servicios.h
+1441639525 c:\users\vic\documents\github\seminario_programacion\spa2\include\servicios.h
 	<iostream>
 	<string>
 	<stdio.h>
 	<conio.h>
 
-1440605213 source:c:\users\vic\documents\github\seminario_programacion\spa2\src\productos.cpp
+1441308128 source:c:\users\vic\documents\github\seminario_programacion\spa2\src\productos.cpp
 
-1440606259 source:c:\users\vic\documents\github\seminario_programacion\spa2\src\servicios.cpp
+1441308128 source:c:\users\vic\documents\github\seminario_programacion\spa2\src\servicios.cpp
+
+1442006393 c:\users\vic\documents\github\seminario_programacion\spa2\include\masajistas.h
+	<iostream>
+	<string>
+	<stdlib.h>
+	<stdio.h>
+	<conio.h>
+
+1441642537 source:c:\users\vic\documents\github\seminario_programacion\spa2\src\masajistas.cpp
+
+1441812963 source:c:\users\vic\documents\github\seminario_programacion\spa2\src\clientes.cpp
+
+1441814806 c:\users\vic\documents\github\seminario_programacion\spa2\include\clientes.h
+	<iostream>
+	<string>
+	<stdlib.h>
+	<stdio.h>
+	<conio.h>
 

@@ -57,13 +57,15 @@ void Productos::Buscar(){
 	cin >> busqueda;
 	if (id_producto == busqueda){
 		Mostrar();
-	} else { cout << "No existe"; getch(); }
+	} else {
+		cout << "No existe";
+		getch();
+	}
 }
 
 void Productos::Menu(){
 	bool repetir=true;
 	int opcion;
-	int main();
 	while(repetir){
 		system("cls");
 		fflush(stdin);
