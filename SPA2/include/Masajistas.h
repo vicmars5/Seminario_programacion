@@ -57,15 +57,12 @@ void Masajistas::Capturar(){
 }
 
 void Masajistas::Mostrar(){
-    system("cls");
 
-    cout << endl << "Codigo: " << id_masajista ;
-
+    cout << endl << "Codigo: " << id_masajista;
     cout << endl << "Nombre: " << nombre;
     cout << endl << "Edad: " << edad;
     cout << endl << "Especialidad: " << especialidad;
-
-    getch();
+    cout << endl;
 }
 
 void Masajistas::Menu(){
@@ -80,7 +77,7 @@ void Masajistas::Menu(){
             << endl << "1.-Capturar"
             << endl << "2.-Mostrar"
             << endl << "3.-Buscar"
-            << endl << "4.-Salir"
+            << endl << "0.-Salir"
             << endl << "Opcion: ";
         cin >> opcion;
 
@@ -93,7 +90,7 @@ void Masajistas::Menu(){
         if(opcion == 3){
             Buscar();
         }
-        if(opcion == 4){
+        if(opcion == 0){
             repetir=false;
         }
     }while (repetir);

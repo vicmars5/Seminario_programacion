@@ -12,8 +12,8 @@ class Clientes
 {
 	public:
 		//Atributos de clase
-		int tel[3], id_cliente;
-		string nombre, correo;
+		int id_cliente;
+		string nombre, correo, tel[3];
 
 		//metodos de clases
 	public:
@@ -34,20 +34,21 @@ void Clientes::Capturar(){
 	getline(cin, nombre);
 
 	fflush(stdin);
-	cout << endl << "Telefono 1: " << endl;
-	cin >> tel[0];
+	cout << endl << "Telefono casa: " << endl;
+	getline(cin, tel[0]);
 
 	fflush(stdin);
-	cout << endl << "Telefono 2: " << endl;
-	cin >> tel[1];
+	cout << endl << "Telefono telefono: " << endl;
+	getline(cin, tel[1]);
 
 	fflush(stdin);
 	cout << endl << "Telefono 3: " << endl;
-	cin >> tel[2];
+	getline(cin, tel[2]);
 
 	fflush(stdin);
 	cout << endl << "Correo: " << endl;
 	getline(cin, correo);
+
 
 }
 
@@ -62,6 +63,7 @@ void Clientes::Mostrar(){
 	cout << endl << "Correo: " << correo;
 
 	getch();
+
 }
 
 void Clientes::Buscar(){

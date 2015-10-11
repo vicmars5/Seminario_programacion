@@ -20,6 +20,7 @@ class Servicios
         void Mostrar();
         void Buscar();
         void Menu();
+        void Modificar();
 };
 
 void Servicios::Capturar()
@@ -37,6 +38,7 @@ void Servicios::Capturar()
 
     cout << "\nPrecio maximo: " << endl;
     cin>>precio_minimo;
+    system("cls");
 }
 
 void Servicios::Mostrar(){
@@ -44,9 +46,16 @@ void Servicios::Mostrar(){
     cout << endl <<"Descripcion: " << descripcion ;
     cout << endl <<"Precio minimo: $" << precio_minimo ;
     cout << endl <<"Precio maximo: $" << precio_maximo ;
+    cout << endl;
     getch();
 }
 
+void Servicios::Modificar(){
+    system("cls");
+    Mostrar();
+    Capturar();
+    Mostrar();
+}
 void Servicios::Buscar(){
     system("cls");
     string busqueda;
@@ -70,7 +79,7 @@ void Servicios::Menu(){
             << endl << "1.-Capturar"
             << endl << "2.-Mostrar"
             << endl << "3.-Buscar"
-            << endl << "4.-Salir"
+            << endl << "0.-Salir"
             << endl << "Opcion: ";
         cin >> opcion;
 
@@ -83,7 +92,7 @@ void Servicios::Menu(){
         if(opcion == 3){
             Buscar();
         }
-        if(opcion == 4){
+        if(opcion == 0){
             repetir=false;
         }
     }while (repetir);

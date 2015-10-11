@@ -42,12 +42,12 @@ void Productos::Capturar()
 }
 
 void Productos::Mostrar(){
-	system("cls");
 	cout << "\nIdentificador: " << id_producto;
 	cout << "\nNombre: " << nombre;
 	cout << "\nDescripcion: " << descripcion;
 	cout << "\nPrecio: " << precio;
-	getch();
+    cout << endl;
+    getch();
 }
 
 void Productos::Buscar(){
@@ -74,7 +74,7 @@ void Productos::Menu(){
 			<< endl << "1.-Capturar"
 			<< endl << "2.-Mostrar"
 			<< endl << "3.-Buscar"
-			<< endl << "4.-Salir"
+			<< endl << "0.-Salir"
 			<< endl << "Opcion: ";
 		cin >> opcion;
 
@@ -88,7 +88,7 @@ void Productos::Menu(){
 			case 3:
 				Buscar();
 			break;
-			case 4:
+			case 0:
 				repetir=false;
 			break;
 
