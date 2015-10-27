@@ -1,5 +1,7 @@
 #ifndef PRODUCTOS_H
 #define PRODUCTOS_H
+
+#include <fstream>
 #include <iostream>
 #include <string>
 #include <stdlib.h>
@@ -21,6 +23,7 @@ class Productos
 		void Mostrar();
 		void Buscar();
 		void Menu();
+		int Leer();
 };
 
 void Productos::Capturar()
@@ -95,4 +98,21 @@ void Productos::Menu(){
 		}
 	}
 }
+
+
+int Productos::Leer(){
+	string linea;
+	int cant_registros=0;
+	ifstream archivo("datos.txt");
+    if(archivo.is_open()){
+    	//Mientras que no sea fin de archivo
+    	while (! archivo.eof()){
+    		getline(archivo, linea);
+    		cant_registros++;
+    	}
+    	archivo.close();
+    }
+    return cant_registros;
+}
+
 #endif // PRODUCTOS_H

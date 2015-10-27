@@ -38,7 +38,7 @@ void Servicios::Capturar()
 
     cout << "\nPrecio maximo: " << endl;
     cin>>precio_minimo;
-    system("cls");
+    cout << endl;
 }
 
 void Servicios::Mostrar(){

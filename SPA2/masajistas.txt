@@ -1,0 +1,2 @@
+123	Luis	40	Relajante
+324	Armando	30	Reductivo

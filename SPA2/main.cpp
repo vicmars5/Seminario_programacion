@@ -21,17 +21,35 @@ ifdef WIN32
 #endif
 
 */
-Servicios servicios;
-Productos productos;
+const int CANTIDAD=2;
+Servicios servicios[CANTIDAD];
+Productos productos[2];
 Masajistas masajistas;
 Clientes clientes[2];
 Manejador manejador;
+
+
+
+void LeerRegistros(){
+    manejador.LeerProductos();
+    manejador.LeerClientes();
+    manejador.LeerServicios();
+
+    for (int x=0 ; x<2; x++){
+        productos[x] = manejador.productos[x];
+        clientes[x] = manejador.clientes[x];
+        servicios[x] = manejador.servicios[x];
+    }
+}
+
 int main()
 {
 	system("cls");
     int opcion,x;
     string busqueda;
     bool repetir=true;
+
+    LeerRegistros();
 
     system("color 3");
     while(repetir){
@@ -49,15 +67,18 @@ int main()
 
         if (opcion==1){
             //productos.Menu();
-            /*for (x=0 ; x<3; x++){
+            manejador.LeerProductos();
+            for (x=0 ; x<2; x++){
                 system("cls");
-                productos[x].Capturar();
+                productos[x] = manejador.productos[x];
+                productos[x].Mostrar();
             }
-            system("cls");
+            //manejador.GuardarProductos();
+            /*system("cls");
             for (x=0 ; x<3; x++){
                 productos[x].Mostrar();
             }*/
-            productos.Menu();
+            //productos.Menu();
             /*productos.Capturar();
             productos.Mostrar();
             productos.Buscar();*/
@@ -67,11 +88,11 @@ int main()
             /*for (x=0; x<3; x++){
                 system("cls");
                 servicios[x].Capturar();
-            }
-            for (x=0; x<3; x++){
+            }*/
+            for (x=0; x<2; x++){
                 servicios[x].Mostrar();
             }
-            cout << "Codigo del servicio que desea modificar: " << endl;
+            /*cout << "Codigo del servicio que desea modificar: " << endl;
             cin >> busqueda;
 
             for (x=0; x<3; x++){
@@ -80,9 +101,16 @@ int main()
                 }
             }
             */
-            servicios.Menu();
-            /*servicios.Capturar();
-            servicios.Buscar();
+            /*servicios.Menu();
+            servicios[0].Mostrar();
+            servicios[1].Mostrar();
+            /*
+            servicios[0].Capturar();
+            servicios[1].Capturar();
+            manejador.servicios[0]= servicios[0];
+            manejador.servicios[1]= servicios[1];
+            manejador.GuardarServicios();
+            /*servicios.Buscar();
             servicios.Mostrar();*/
         }
         if (opcion==3){
@@ -113,14 +141,6 @@ int main()
             manejador.Leer();*/
         }
         if (opcion==6){
-
-            manejador.LeerClientes();
-            clientes[0] = manejador.clientes[0];
-            clientes[1] = manejador.clientes[1];
-            //manejador.LeerClientes();
-            /*
-            manejador.Guardar();
-            manejador.Leer();*/
         }
         if(opcion==0){
             repetir=false;
@@ -141,4 +161,3 @@ int main()
 	}
 	return 0;
 }
-
