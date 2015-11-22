@@ -23,16 +23,18 @@ class Masajistas
 	public:
 		void Capturar();
 		void Mostrar();
+		void Modificar();
 		void Buscar();
+		bool ObtenerRegistro(int busqueda);
 		void Menu();
 		int CantidadRegistros();
 		int obtenerFila(string cadena);
 };
 
-//Masajistas masajistas[10];
+//Masajistas masajistas[20];
 //Manejador manejador;
 const string NOMBRE_ARCHIVO="masajistas.txt";
-const int MAX_REGISTROS=10;
+const int MAX_REGISTROS=20;
 
 void Masajistas::Buscar(){
 	system("cls");
@@ -65,33 +67,57 @@ void Masajistas::Buscar(){
 	}
 }
 
+bool Masajistas::ObtenerRegistro(int busqueda){
+    int cont=0;
+    string cadena;
+    bool existe;
+    ifstream archivo("masajistas.txt", ios::in);
+	if(archivo.is_open()){
+			while(!archivo.eof() && (cont <= CantidadRegistros())){
+                getline(archivo, cadena);
+                obtenerFila(cadena);
+
+                if (id_masajista == busqueda){
+                    cout << endl << "Codigo: " << id_masajista;
+                    cout << endl << "Nombre: " << nombre;
+                   	cout << endl << "Edad: " << edad;
+                    cout << endl << "Especialidad: " << especialidad;
+                    cout << endl;
+                    break;
+                }
+                cont ++;
+			}
+			getch();
+	}
+}
+
 void Masajistas::Capturar(){
 	int cant;
 	cout << "\t Cuantos masajistas desea ingresar?";
 	cin >> cant;
-
 	if(cant <= (MAX_REGISTROS-CantidadRegistros())){
 		ofstream archivo;
 		archivo.open("masajistas.txt", ios::app);
 		if(archivo.is_open()){
-			cout << "Registros en BD " << CantidadRegistros() << endl;
+			cout << "Registros en BD " << CantidadRegistros() << endl << endl;
 			for (int x=0 ; x<cant ; x++){
 				fflush(stdin);
-				cout << endl << "Codigo: " << endl;
+				cout << "Codigo: ";
 				cin>>id_masajista;
 
 				fflush(stdin);
-				cout << endl << "Nombre: " << endl;
+				cout << "Nombre: ";
 				getline(cin, nombre);
 
 				fflush(stdin);
-				cout << endl << "Edad: " << endl;
+				cout << "Edad: ";
 				cin >> edad;
 
 				fflush(stdin);
-				cout << endl << "Especialidad: " << endl;
+				cout << "Especialidad: ";
 				getline(cin, especialidad);
 
+				cout << endl;
 				archivo << id_masajista << "\t" << nombre << "\t" << edad << "\t" << especialidad << endl;
 
 			}
@@ -99,9 +125,11 @@ void Masajistas::Capturar(){
 			cout << "Se guardo exitosamente";
 		} else {
 			cout << "ERROR 404, document not found :v";
+            getch();
 		}
 	} else {
-		cout << "La bade datos esta llena, no caben los registros requeridos";
+		cout << "La base datos esta llena, no caben los registros requeridos";
+		getch();
 	}
 
 
@@ -123,6 +151,65 @@ void Masajistas::Mostrar(){
 
                 cont ++;
 			}
+	}
+	if(cont==1) {
+		cout << "Archivo vacio" << endl;
+	}
+	getch();
+}
+
+void Masajistas::Modificar(){
+	system("cls");
+	int busqueda, cont=1;
+	string cadena, info_archivo="";
+	bool existe=false;
+	cout << "Escriba el identificador del cliente que desea buscar: ";
+	cin >> busqueda;
+
+	ifstream archivo("masajistas.txt", ios::in);
+	ofstream nuevoArchivo("masajistas_new.txt", ios::app);
+	if(archivo.is_open()){
+			while(!archivo.eof() && (cont <= CantidadRegistros())){
+                getline(archivo, cadena);
+                obtenerFila(cadena);
+                if (id_masajista == busqueda){
+                	int opcion;
+                    cout << endl << "Codigo: " << id_masajista;
+                    cout << endl << "1.-Nombre: " << nombre;
+                    cout << endl << "2.-Edad: " << edad;
+                    cout << endl << "3.-Especialidad: " << especialidad;
+                    cout << endl;
+                    cout << "Seleccione la opcion que desea modificar";
+                    cin >> opcion;
+                    fflush(stdin);
+                    switch (opcion) {
+                    	case 1:
+                    		cout << endl << "Nombre: ";
+                    		getline(cin, nombre);
+                    		break;
+                    	case 2:
+                    		cout << endl << "Edad: ";
+                    		cin >> edad;
+                    		break;
+                    	case 3:
+                    		cout << endl << "Especialidad: ";
+                    		getline(cin, especialidad);
+                    		break;
+                    }
+                    existe=true;
+                }
+                nuevoArchivo << id_masajista << "\t" << nombre << "\t" << edad << "\t" << especialidad << "\n";
+                cont ++;
+			}
+            archivo.close();
+            nuevoArchivo.close();
+			if(existe){
+                remove("masajistas.txt");
+                rename("masajistas_new.txt","masajistas.txt");
+                ObtenerRegistro(busqueda);
+			} else {
+                cout << "NO SE ENCONTRO REGISTRO";
+			}
 			getch();
 	}
 }
@@ -139,6 +226,7 @@ void Masajistas::Menu(){
 			<< endl << "1.-Capturar"
 			<< endl << "2.-Mostrar"
 			<< endl << "3.-Buscar"
+			<< endl << "4.-Modificar"
 			<< endl << "0.-Salir"
 			<< endl << "Opcion: ";
 		cin >> opcion;
@@ -151,6 +239,9 @@ void Masajistas::Menu(){
 		}
 		if(opcion == 3){
 			Buscar();
+		}
+		if(opcion == 4){
+            Modificar();
 		}
 		if(opcion == 0){
 			repetir=false;
@@ -169,8 +260,10 @@ int Masajistas::CantidadRegistros(){
 			cant_registros++;
 		}
 		archivo.close();
+		return cant_registros-1;
+	} else {
+		return 0;
 	}
-	return cant_registros-1;
 }
 
 int Masajistas::obtenerFila(string cadena){

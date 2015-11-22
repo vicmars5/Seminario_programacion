@@ -1,2 +1,3 @@
-123	Luis	40	Relajante
-324	Armando	30	Reductivo
+1	Luis Reyes	24	Relajante
+2	Armando	32	Reductivo
+3	Angel Diaz	30	Relajante

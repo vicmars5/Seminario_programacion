@@ -30,7 +30,7 @@ class Manejador
     Masajistas masajistas;
     Clientes clientes[2];
     Servicios servicios[2];
-    Productos productos[2];
+    Productos productos;
 };
 
 void Manejador::Guardar(){
@@ -81,7 +81,7 @@ void Manejador::LeerClientes(){
             }
     }
 }
-
+/*
 void Manejador::GuardarProductos(){
     ofstream archivo;
     archivo.open("productos.txt", ios::out);//app permite que se ñaada el registr despues
@@ -112,7 +112,7 @@ void Manejador::LeerProductos(){
         cout << "NO SE PUDO LEER EL ARCHIVO";
     }
 }
-
+*/
 void Manejador::GuardarServicios(){
     ofstream archivo;
     archivo.open("servicios.txt", ios::out);//app permite que se ñaada el registr despues

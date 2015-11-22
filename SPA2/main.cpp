@@ -21,26 +21,14 @@ ifdef WIN32
 #endif
 
 */
-const int CANTIDAD=2;
-Servicios servicios[CANTIDAD];
-Productos productos[2];
+//const int CANTIDAD=2;
+Servicios servicios;
+Productos productos;
 Masajistas masajistas;
-Clientes clientes[2];
+Clientes clientes;
 Manejador manejador;
 
 
-
-void LeerRegistros(){
-    manejador.LeerProductos();
-    manejador.LeerClientes();
-    manejador.LeerServicios();
-
-    for (int x=0 ; x<2; x++){
-        productos[x] = manejador.productos[x];
-        clientes[x] = manejador.clientes[x];
-        servicios[x] = manejador.servicios[x];
-    }
-}
 
 int main()
 {
@@ -48,8 +36,6 @@ int main()
     int opcion,x;
     string busqueda;
     bool repetir=true;
-
-    LeerRegistros();
 
     system("color 3");
     while(repetir){
@@ -67,12 +53,7 @@ int main()
 
         if (opcion==1){
             //productos.Menu();
-            manejador.LeerProductos();
-            for (x=0 ; x<2; x++){
-                system("cls");
-                productos[x] = manejador.productos[x];
-                productos[x].Mostrar();
-            }
+            productos.Menu();
             //manejador.GuardarProductos();
             /*system("cls");
             for (x=0 ; x<3; x++){
@@ -84,14 +65,11 @@ int main()
             productos.Buscar();*/
         }
         if (opcion==2){
-            //servicios.Menu();
+            servicios.Menu();
             /*for (x=0; x<3; x++){
                 system("cls");
                 servicios[x].Capturar();
             }*/
-            for (x=0; x<2; x++){
-                servicios[x].Mostrar();
-            }
             /*cout << "Codigo del servicio que desea modificar: " << endl;
             cin >> busqueda;
 
@@ -125,16 +103,17 @@ int main()
             }*/
         }
         if (opcion==4){
-            clientes[0].Mostrar();
-            clientes[1].Mostrar();
+            clientes.Menu();
             /*
             clientes[0].Menu();
             clientes[1].Menu();*/
         }
         if (opcion==5){
+
+            /*
             manejador.clientes[0] = clientes[0];
             manejador.clientes[1] = clientes[1];
-            manejador.GuardarClientes();
+            manejador.GuardarClientes();*/
             //manejador.LeerClientes();
             /*
             manejador.Guardar();

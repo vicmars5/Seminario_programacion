@@ -90,22 +90,28 @@ void Clientes::Menu(){
 			<< endl << "1.-Capturar"
 			<< endl << "2.-Mostrar"
 			<< endl << "3.-Buscar"
-			<< endl << "4.-Salir"
+			<< endl << "0.-Salir"
 			<< endl << "Opcion: ";
 		cin >> opcion;
 
 		if(opcion == 1){
 			Capturar();
 		}
-		if(opcion == 2){
-			Mostrar();
-		}
-		if(opcion == 3){
-			Buscar();
-		}
-		if(opcion == 4){
-			repetir=false;
-		}
+		else{
+            if(opcion == 2){
+                Mostrar();
+            }
+            else{
+                if(opcion == 3){
+                    Buscar();
+                }
+                else{
+                    if(opcion == 0){
+                        repetir=false;
+                    }
+                }
+            }
+        }
 	}while (repetir);
 }
 #endif

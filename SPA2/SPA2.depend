@@ -19,7 +19,7 @@
 	<iostream>
 	<string>
 
-1445438263 source:c:\users\vic\documents\github\seminario_programacion\spa2\main.cpp
+1446829894 source:c:\users\vic\documents\github\seminario_programacion\spa2\main.cpp
 	<iostream>
 	<string>
 	<stdlib.h>
@@ -29,7 +29,7 @@
 	"Clientes.h"
 	<Manejador.h>
 
-1445439777 c:\users\vic\documents\github\seminario_programacion\spa2\include\productos.h
+1447004737 c:\users\vic\documents\github\seminario_programacion\spa2\include\productos.h
 	<fstream>
 	<iostream>
 	<string>
@@ -47,7 +47,7 @@
 
 1441304528 source:c:\users\vic\documents\github\seminario_programacion\spa2\src\servicios.cpp
 
-1445876246 c:\users\vic\documents\github\seminario_programacion\spa2\include\masajistas.h
+1447013814 c:\users\vic\documents\github\seminario_programacion\spa2\include\masajistas.h
 	<fstream>
 	<iostream>
 	<string>
@@ -59,7 +59,7 @@
 
 1441809363 source:c:\users\vic\documents\github\seminario_programacion\spa2\src\clientes.cpp
 
-1443626323 c:\users\vic\documents\github\seminario_programacion\spa2\include\clientes.h
+1446831769 c:\users\vic\documents\github\seminario_programacion\spa2\include\clientes.h
 	<iostream>
 	<string>
 	<stdlib.h>
@@ -68,7 +68,7 @@
 
 1442241775 source:c:\users\vic\documents\github\seminario_programacion\spa2\src\manejador.cpp
 
-1445438068 c:\users\vic\documents\github\seminario_programacion\spa2\include\manejador.h
+1446744626 c:\users\vic\documents\github\seminario_programacion\spa2\include\manejador.h
 	<fstream>
 	<stdio.h>
 	<Clientes.h>
