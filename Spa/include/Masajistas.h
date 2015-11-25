@@ -33,7 +33,6 @@ class Masajistas
 //Masajistas masajistas[20];
 //Manejador manejador;
 const string NOMBRE_ARCHIVO="masajistas.txt";
-const int MAX_REGISTROS=20;
 
 void Masajistas::Buscar(){
 	system("clear");
@@ -132,8 +131,6 @@ void Masajistas::Capturar(){
 		cin.ignore();
 		cin.get();
 	}
-
-
 }
 
 void Masajistas::Mostrar(){

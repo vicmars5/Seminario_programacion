@@ -3,7 +3,6 @@
 #include <iostream>
 #include <string>
 #include <stdio.h>
-#include <conio.h>
 
 using namespace std;
 
@@ -25,7 +24,7 @@ class Servicios
 
 void Servicios::Capturar()
 {
-    fflush(stdin);
+    cin.ignore();
 
     cout << "\nCodigo de servicio: " << endl;
     getline(cin, codigo);
@@ -35,10 +34,12 @@ void Servicios::Capturar()
 
     cout << "\nPrecio minimo: " << endl;
     cin>>precio_maximo;
+    cin.ignore();
 
     cout << "\nPrecio maximo: " << endl;
     cin>>precio_minimo;
     cout << endl;
+    cin.ignore();
 }
 
 void Servicios::Mostrar(){
@@ -47,23 +48,24 @@ void Servicios::Mostrar(){
     cout << endl <<"Precio minimo: $" << precio_minimo ;
     cout << endl <<"Precio maximo: $" << precio_maximo ;
     cout << endl;
-    getch();
+    cin.get();
 }
 
 void Servicios::Modificar(){
-    system("cls");
+    system("clear");
     Mostrar();
     Capturar();
     Mostrar();
 }
 void Servicios::Buscar(){
-    system("cls");
+    system("clear");
     string busqueda;
     cout << "Escriba el codigo del servicio que desea buscar: ";
     cin >> busqueda;
+    cin.ignore();
     if (codigo == busqueda){
         Mostrar();
-    } else { cout << "No  existe"; getch();}
+    } else { cout << "No  existe"; cin.get();}
 
 }
 
@@ -72,8 +74,7 @@ void Servicios::Menu(){
     int opcion;
 
     do{
-        system("cls");
-        fflush(stdin);
+        system("clear");
 
         cout << "   Servicios"
             << endl << "1.-Capturar"
@@ -82,6 +83,7 @@ void Servicios::Menu(){
             << endl << "0.-Salir"
             << endl << "Opcion: ";
         cin >> opcion;
+        cin.ignore();
 
         if(opcion == 1){
             Capturar();

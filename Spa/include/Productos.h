@@ -19,95 +19,271 @@ class Productos
 
 		//metodos de clases
 	public:
+		bool ObtenerRegistro(int busqueda);
+		void Buscar();
 		void Capturar();
+		void ObtenerFila(string cadena);
+		void Menu();
 		void Mostrar();
 		void MostrarProducto(int id);
-		void Buscar();
-		void Menu();
 		void Modificar();
+		int CantidadRegistros();
 		int Leer();
+		string nombreProducto(string busqueda);
+		float precioProducto(string busqueda);
 };
 Productos producto[20];
-void Productos::Capturar()
-{
-	int cantIngresar;
-	system("clear");
-	cout << "\nCuantos productos deseas ingresar? ";
-	cin >> cantIngresar;
-	cin.ignore();
-    cout << endl;
+const int MAX_REGISTROS=20;
 
-	if((cantIngresar+registros)<=20){
-	    for(cont=registros; cont<(cantIngresar+registros); cont++){
-	        cout << "Introduce el identififcador del producto: ";
-	        getline(cin, producto[cont].id_producto);
-	        cout << "Nombre del producto: ";
-	        getline(cin, producto[cont].nombre);
-	        cout << "Descripcion del producto: ";
-	        getline(cin, producto[cont].descripcion);
-	        cout << "Precio del producto: ";
-	        cin >> producto[cont].precio;
-	        cin.ignore();
-	        cout << endl;
-	    }
-	    registros=cont;
-	    cout << "Registros en base de datos " << registros << endl;
-	} else {
-		cout << "Has registrado el maximo de productos" << endl;
+string Productos::nombreProducto(string busqueda){
+	int cont=1;
+	string cadena;
+	bool existe=false;
+
+	ifstream archivo("productos.txt", ios::in);
+	if(archivo.is_open()){
+			while(!archivo.eof() && (cont <= CantidadRegistros())){
+                getline(archivo, cadena);
+                ObtenerFila(cadena);
+
+                if (atoi(id_producto.c_str()) == atoi(busqueda.c_str())){
+                    existe=true;
+                	return nombre;
+                	break;
+                }
+                cont ++;
+			}
+			if(existe==false){
+                return "No existe";
+			}
 	}
+	return "No existe";
+}
+
+float Productos::precioProducto(string busqueda){
+	int cont=1;
+	string cadena;
+	bool existe=false;
+
+	ifstream archivo("productos.txt", ios::in);
+	if(archivo.is_open()){
+			while(!archivo.eof() && (cont <= CantidadRegistros())){
+                getline(archivo, cadena);
+                ObtenerFila(cadena);
+
+                if (atoi(id_producto.c_str()) == atoi(busqueda.c_str())){
+                    existe=true;
+                	return precio;
+                	break;
+                }
+                cont ++;
+			}
+			if(existe==false){
+                return 0;
+			}
+	}
+	return 0;
+}
+
+int Productos::CantidadRegistros(){
+	string linea;
+	int cant_registros=0;
+	ifstream archivo("productos.txt");
+	if(archivo.is_open()){
+		//Mientras que no sea fin de archivo
+		while (! archivo.eof()){
+			getline(archivo, linea);
+			cant_registros++;
+		}
+		archivo.close();
+		return cant_registros-1;
+	} else {
+		return 0;
+	}
+}
+
+void Productos::Capturar(){
+	int cant;
+	cout << "\t Cuantos preductos desea ingresar?";
+	cin >> cant;
+	cin.ignore();
+	if(cant <= (MAX_REGISTROS-CantidadRegistros())){
+		ofstream archivo;
+		archivo.open("productos.txt", ios::app);
+		if(archivo.is_open()){
+			cout << "Registros en BD " << CantidadRegistros() << endl << endl;
+			for (int x=0 ; x<cant ; x++){
+				cout << "Introduce el identififcador del producto: ";
+				getline(cin, id_producto);
+
+				cout << "Nombre del producto: ";
+				getline(cin, nombre);
+
+				cout << "Descripcion del producto: ";
+				getline(cin, descripcion);
+
+				cout << "Precio del producto: ";
+				cin >> precio;
+				cin.ignore();
+				cout << endl;
+
+				archivo << id_producto << "\t" << nombre << "\t" << descripcion << "\t" << precio << endl;
+
+			}
+			archivo.close();
+			cout << "Se guardo exitosamente";
+		} else {
+			cout << "ERROR 404, document not found :v";
+			cin.get();
+		}
+	} else {
+		cout << "La base datos esta llena, no caben los registros requeridos";
+		cin.get();
+	}
+}
+void Productos::Buscar(){
+    system("clear");
+    int busqueda, cont=1;
+    string cadena;
+    bool existe=false;
+    cout << "Escriba el identificador del cliente que desea buscar: ";
+    cin >> busqueda;
+    cin.ignore();
+
+    if(ObtenerRegistro(busqueda)==false){
+        cout << "NO SE ENCONTRO REGISTRO";
+    }
     cin.get();
+}
+
+void Productos::ObtenerFila(string cadena){
+	string texto;
+	int posicion;
+	posicion = cadena.find_last_of("\t");
+	if (posicion != -1){
+		texto = cadena.substr(posicion+1, cadena.length()-posicion+1);
+		cadena.erase(posicion, cadena.length()-posicion+1);
+		precio=atoi(texto.c_str());
+		posicion = cadena.find_last_of("\t");
+
+		if(posicion != -1){
+			texto = cadena.substr(posicion+1, cadena.length()-posicion+1);
+			descripcion = texto;
+			cadena.erase(posicion, cadena.length()-posicion+1);
+			posicion =  cadena.find_last_of("\t");
+
+			if(posicion != -1){
+				texto = cadena.substr(posicion+1, cadena.length()-posicion+1);
+				nombre = texto.c_str();
+				cadena.erase(posicion, cadena.length()-posicion+1);
+				id_producto = cadena;
+			}
+		}
+	}
+
+}
+bool Productos::ObtenerRegistro(int busqueda){
+	int cont=0;
+	string cadena;
+	ifstream archivo("productos.txt", ios::in);
+	if(archivo.is_open()){
+			while(!archivo.eof() && (cont <= CantidadRegistros())){
+				getline(archivo, cadena);
+				ObtenerFila(cadena);
+
+				if (atoi(id_producto.c_str()) == busqueda){
+					cout << "\nIdentificador: " << id_producto;
+					cout << "\nNombre: " << nombre;
+					cout << "\nDescripcion: " << descripcion;
+					cout << "\nPrecio: " << precio;
+					return true;
+
+				}
+				cont ++;
+			}
+	}
+	return false;
 }
 
 void Productos::Modificar(){
 	system("clear");
-	string busqueda;
-	int opcion;
+	int busqueda, cont=1;
+	string cadena, info_archivo="";
+	bool existe=false;
 	cout << "Escriba el identificador del producto que desea buscar: ";
 	cin >> busqueda;
-	for(cont=0; cont<registros; cont++){
-        if (producto[cont].id_producto == busqueda){
-            MostrarProducto(cont);
+	cin.ignore();
 
-			cout << "Identificador: " << producto[cont].id_producto << endl;
-            cout << "1.-Nombre: " << producto[cont].nombre << endl;
-            cout << "2.-Descripcion: " << producto[cont].descripcion << endl;
-            cout << "3.-Precio: " << producto[cont].precio << endl;
-            cout << endl;
-            cout << "Seleccione la opcion que desea modificar: ";
-            cin >> opcion;
-            cout << endl;
-            cin.ignore();
-            switch (opcion) {
-                case 1:
-                    cout << "Nombre: ";
-                    getline(cin, producto[cont].nombre);
-                    break;
-                case 2:
-                    cout << "Descripcion: ";
-                    getline(cin, producto[cont].descripcion);
-                    break;
-                case 3:
-                    cout << "Precio: ";
-                    cin >> producto[cont].precio;
-                    cin.ignore();
-                    break;
-            }
-            MostrarProducto(cont);
-            break;
-        }
+	ifstream archivo("productos.txt", ios::in);
+	ofstream nuevoArchivo("productos_new.txt", ios::app);
+	if(archivo.is_open()){
+			while(!archivo.eof() && (cont <= CantidadRegistros())){
+				getline(archivo, cadena);
+				ObtenerFila(cadena);
+				if (atoi(id_producto.c_str()) == busqueda){
+					int opcion;
+					cout << endl << "Identificador: " << id_producto;
+					cout << endl << "1.-Nombre: " << nombre;
+					cout << endl << "2.-Descripcion: " << descripcion;
+					cout << endl << "3.-Precio: " << precio;
+					cout << endl;
+					cout << "Seleccione la opcion que desea modificar";
+					cin >> opcion;
+					cin.ignore();
+					switch (opcion) {
+						case 1:
+							cout << endl << "Nombre: ";
+							getline(cin, nombre);
+							break;
+						case 2:
+							cout << endl << "Descripcion: ";
+							getline(cin, descripcion);
+							break;
+						case 3:
+							cout << endl << "Precio: ";
+							cin >> precio;
+							cin.ignore();
+							break;
+					}
+					existe=true;
+				}
+				nuevoArchivo << id_producto << "\t" << nombre << "\t" << descripcion << "\t" << precio << endl;
+				cont ++;
+			}
+			archivo.close();
+			nuevoArchivo.close();
+			if(existe){
+				remove("productos.txt");
+				rename("productos_new.txt","productos.txt");
+				ObtenerRegistro(busqueda);
+			} else {
+				cout << "NO SE ENCONTRO REGISTRO";
+			}
 	}
-	if(cont==registros){
-        cout << "No se encontro el producto" << endl;
-	}
-    cin.get();
+	cin.get();
 }
 
 void Productos::Mostrar(){
-	system("clear");
-	for(cont=0; cont<registros; cont++){
-		MostrarProducto(cont);
+	int cont=1;
+	string cadena;
+	ifstream archivo("productos.txt", ios::in);
+	if(archivo.is_open()){
+			while(!archivo.eof() && (cont <= CantidadRegistros())){
+				getline(archivo, cadena);
+				ObtenerFila(cadena);
+				cout << "\nIdentificador: " << id_producto;
+				cout << "\nNombre: " << nombre;
+				cout << "\nDescripcion: " << descripcion;
+				cout << "\nPrecio: " << precio;
+				cout << endl;
+
+				cont ++;
+			}
 	}
-    cin.get();
+	if(cont==1) {
+		cout << "Archivo vacio" << endl;
+	}
+	cin.get();
 }
 
 void Productos::MostrarProducto(int id){
@@ -115,25 +291,7 @@ void Productos::MostrarProducto(int id){
 		cout << "\nNombre: " << producto[id].nombre;
 		cout << "\nDescripcion: " << producto[id].descripcion;
 		cout << "\nPrecio: " << producto[id].precio;
-	    cout << endl;
-}
-
-void Productos::Buscar(){
-	system("clear");
-	string busqueda;
-	cout << "Escriba el identificador del producto que desea buscar: ";
-	cin >> busqueda;
-	cin.ignore();
-	for(cont=0; cont<registros; cont++){
-        if (producto[cont].id_producto == busqueda){
-            MostrarProducto(cont);
-            break;
-        }
-	}
-	if(cont==registros){
-        cout << "No se encontro" << endl;
-	}
-    cin.get();
+		cout << endl;
 }
 
 void Productos::Menu(){
@@ -154,19 +312,19 @@ void Productos::Menu(){
 		switch(opcion){
 			case 1:
 				Capturar();
-                break;
+				break;
 			case 2:
 				Mostrar();
-                break;
+				break;
 			case 3:
 				Buscar();
-                break;
+				break;
 			case 4:
-                Modificar();
-                break;
+				Modificar();
+				break;
 			case 0:
 				repetir=false;
-                break;
+				break;
 
 		}
 	}
@@ -177,15 +335,15 @@ int Productos::Leer(){
 	string linea;
 	int cant_registros=0;
 	ifstream archivo("datos.txt");
-    if(archivo.is_open()){
-    	//Mientras que no sea fin de archivo
-    	while (! archivo.eof()){
-    		getline(archivo, linea);
-    		cant_registros++;
-    	}
-    	archivo.close();
-    }
-    return cant_registros;
+	if(archivo.is_open()){
+		//Mientras que no sea fin de archivo
+		while (! archivo.eof()){
+			getline(archivo, linea);
+			cant_registros++;
+		}
+		archivo.close();
+	}
+	return cant_registros;
 }
 
 #endif // PRODUCTOS_H

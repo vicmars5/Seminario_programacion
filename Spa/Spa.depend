@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1448149436 source:/home/vic/Documentos/proyectos/Seminario_programacion/Spa/main.cpp
+1448410050 source:/home/vic/Documentos/proyectos/Seminario_programacion/Spa/main.cpp
 	<iostream>
 	<string>
 	<stdlib.h>
@@ -7,32 +7,52 @@
 	"Servicios.h"
 	"Masajistas.h"
 	"Clientes.h"
+	"NotaVenta.h"
 
-1448150279 /home/vic/Documentos/proyectos/Seminario_programacion/Spa/include/Productos.h
+1448415846 /home/vic/Documentos/proyectos/Seminario_programacion/Spa/include/Productos.h
 	<fstream>
 	<iostream>
 	<string>
 	<stdlib.h>
 	<stdio.h>
 
-1447820631 /home/vic/Documentos/proyectos/Seminario_programacion/Spa/include/Servicios.h
+1448416910 /home/vic/Documentos/proyectos/Seminario_programacion/Spa/include/Servicios.h
+	<iostream>
+	<fstream>
+	<string>
+	<stdio.h>
+	<cstdlib>
 
-1448148752 /home/vic/Documentos/proyectos/Seminario_programacion/Spa/include/Masajistas.h
+1448412420 /home/vic/Documentos/proyectos/Seminario_programacion/Spa/include/Masajistas.h
 	<fstream>
 	<iostream>
 	<string>
 	<stdlib.h>
 	<stdio.h>
 
-1447820666 /home/vic/Documentos/proyectos/Seminario_programacion/Spa/include/Clientes.h
+1448415056 /home/vic/Documentos/proyectos/Seminario_programacion/Spa/include/Clientes.h
+	<iostream>
+	<string>
+	<stdlib.h>
+	<stdio.h>
 
-1447820666 source:/home/vic/Documentos/proyectos/Seminario_programacion/Spa/src/Clientes.cpp
-	"Clientes.h"
+1448214604 source:/home/vic/Documentos/proyectos/Seminario_programacion/Spa/src/Clientes.cpp
 
 1447821155 source:/home/vic/Documentos/proyectos/Seminario_programacion/Spa/src/Masajistas.cpp
 
 1448149386 source:/home/vic/Documentos/proyectos/Seminario_programacion/Spa/src/Productos.cpp
 
-1447820631 source:/home/vic/Documentos/proyectos/Seminario_programacion/Spa/src/Servicios.cpp
+1448333452 source:/home/vic/Documentos/proyectos/Seminario_programacion/Spa/src/Servicios.cpp
+
+1448408772 source:/home/vic/Documentos/proyectos/Seminario_programacion/Spa/src/NotaVenta.cpp
+
+1448417612 /home/vic/Documentos/proyectos/Seminario_programacion/Spa/include/NotaVenta.h
+	<fstream>
+	<iostream>
+	<string>
+	<stdlib.h>
+	<stdio.h>
+	"Clientes.h"
+	"Productos.h"
 	"Servicios.h"
 

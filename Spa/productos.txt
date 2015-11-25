@@ -1,0 +1,3 @@
+1	Crema exfoliante	Limpia las impuresas de la piel[1;5D[1;5D[1;5D[1;5D	100
+1	Crema exfoliante	Limpia las impuresas de la piel[1;5D[1;5D[1;5D[1;5D	100
+2	Crema aclarante	Aclara la piel tres tonos	120
